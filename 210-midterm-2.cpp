@@ -236,7 +236,25 @@ int main() {
 
     }
 
-    cout 
+    cout << "Resulting line:\n";
+    for (string n : lineNames)
+        cout << "   " << n << "\n";
+
+    for (int minute = 2; minutes <= 20; ++minute) {
+        cout << "\nTime step #" << minute << ":/n";
+
+        if (!line.empty() && (rand() % 100 + 1) <= 40) {
+            cout << "   " << linesName.front() << " is served \n";
+            lines.pop_front();
+            linesName.erase(lineNames.begin());
+
+        }
+
+        if ((rand() % 100 + 1) <= 10) {
+            string vip = names[rand() % names.size()]
+            cout << "   " << vip << " (VIP) joins the front of the line\n";
+            
+    
     
     
     
