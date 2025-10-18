@@ -211,28 +211,28 @@ int main() {
     srand(time(0));
 
     vector<string> names;
-    ifstream file("names.txt")
+    ifstream file("names.txt");
     if (!file) {
-        cout << "Could not open names.txt, please try again.\n"
+        cout << "Could not open names.txt, please try again.\n";
         return 1;
 
     }
 
     string name;
-    while (file << name)
+    while (file >> name)
         names.push_back(name);
     file.close();
 
     DoublyLinkedList line;
     
-    cout << "Store is open:\n"
+    cout << "Store is open:\n";
     vector <string> lineNames;
 
     for (int i = 0; i < 5; ++i) {
-    string customer = name[rand() % names.size()];
+    string customer = names[rand() % names.size()];
     cout << "   " << customer << " joins the line\n";
     line.push_back(i + 1);
-    linesNames.push_back(customer);
+    lineNames.push_back(customer);
 
     }
 
@@ -240,26 +240,26 @@ int main() {
     for (string n : lineNames)
         cout << "   " << n << "\n";
 
-    for (int minute = 2; minutes <= 20; ++minute) {
-        cout << "\nTime step #" << minute << ":/n";
+    for (int minute = 2; minute <= 20; ++minute) {
+        cout << "\nTime step #" << minute << ":\n";
 
-        if (!line.empty() && (rand() % 100 + 1) <= 40) {
-            cout << "   " << linesName.front() << " is served \n";
-            lines.pop_front();
-            linesName.erase(lineNames.begin());
+        if (!lineNames.empty() && (rand() % 100 + 1) <= 40) {
+            cout << "   " << lineNames.front() << " is served \n";
+            line.pop_front();
+            lineNames.erase(lineNames.begin());
 
         }
 
         if ((rand() % 100 + 1) <= 10) {
-            string vip = names[rand() % names.size()]
+            string vip = names[rand() % names.size()];
             cout << "   " << vip << " (VIP) joins the front of the line\n";
-            line.push_front(rand () % 90 + 10);
+            line.push_front(rand() % 90 + 10);
             lineNames.insert(lineNames.begin(), vip);
 
         }
 
         if ((rand() % 100 + 1) <=60) {
-            string newcomer = name[rand() % names.size()];
+            string newcomer = names[rand() % names.size()];
             cout << "   "  << newcomer << " joins the line\n";
             line.push_back(rand() % 90 + 10);
             lineNames.push_back(newcomer);
@@ -283,14 +283,14 @@ int main() {
 
         cout << " Resulting line:\n";
         if (lineNames.empty())
-            cout << "   (empty)\n;
+            cout << "   (empty)\n";
         else
             for (string n : lineNames)
-            cout << "   " << n << \n";
+            cout << "   " << n << "\n";
 
     }
 
-    cout << "\nSimulation complete. \n"
+    cout << "\nSimulation complete. \n";
     return 0;
 
 }
