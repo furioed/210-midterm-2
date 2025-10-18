@@ -271,11 +271,9 @@ int main() {
         else
             for (string n : lineNames)
                 cout << "   " << n << "\n";
-  
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-  
-    }
 
+    }
+// COULD NOT FIGURE OUT HOW TO DO IT ALL IN 1 MIN INTERVALS. FEEDBACK IS APPRECIATED
     cout << "\nSimulation complete.\n";
     return 0;
 }
