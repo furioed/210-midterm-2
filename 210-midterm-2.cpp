@@ -208,12 +208,12 @@ public:
 };
 
 int main() {
-    srand(time)(0));
+    srand(time(0));
 
     vector<string> names;
     ifstream file("names.txt")
     if (!file) {
-        cout << "Could not open names.txt, please try again\n"
+        cout << "Could not open names.txt, please try again.\n"
         return 1;
 
     }
@@ -273,11 +273,26 @@ int main() {
 
         }
 
+        if (lineNames.size() > 2 && (rand () % 100 + 1) <=10) {
+            int pos = rand() % lineNames.size();
+            cout << "   " << lineNames[pos] << " left the line\n";
+            line.delete_pos(pos + 1);
+            lineNames.erase(lineNames.begin() + pos);
+
+        }
+
+        cout << " Resulting line:\n";
+        if (lineNames.empty())
+            cout << "   (empty)\n;
+        else
+            for (string n : lineNames)
+            cout << "   " << n << \n";
+
+    }
+
+    cout << "\nSimulation complete. \n"
+    return 0;
+
+}
         
-    
-    
-    
-    
-    
-    cout << "There are " << names.size() << "names from the file. \n\n"
     
