@@ -253,7 +253,27 @@ int main() {
         if ((rand() % 100 + 1) <= 10) {
             string vip = names[rand() % names.size()]
             cout << "   " << vip << " (VIP) joins the front of the line\n";
-            
+            line.push_front(rand () % 90 + 10);
+            lineNames.insert(lineNames.begin(), vip);
+
+        }
+
+        if ((rand() % 100 + 1) <=60) {
+            string newcomer = name[rand() % names.size()];
+            cout << "   "  << newcomer << " joins the line\n";
+            line.push_back(rand() % 90 + 10);
+            lineNames.push_back(newcomer);
+
+        }
+
+        if(!line.empty() && (rand() % 100 + 1) <= 20) {
+            cout << "   " << lineNames.back() << " (at the rear) left the line\n";
+            line.pop_back();
+            lineNames.pop_back();
+
+        }
+
+        
     
     
     
