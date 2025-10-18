@@ -244,7 +244,7 @@ int main() {
         cout << "\nTime step #" << minute << ":\n";
 
         if (!lineNames.empty() && (rand() % 100 + 1) <= 40) {
-            cout << "   " << lineNames.front() << " is served \n";
+            cout << "   " << lineNames.front() << " is served\n";
             line.pop_front();
             lineNames.erase(lineNames.begin());
 
@@ -266,14 +266,14 @@ int main() {
 
         }
 
-        if(!line.empty() && (rand() % 100 + 1) <= 20) {
+        if(!lineNames.empty() && (rand() % 100 + 1) <= 20) {
             cout << "   " << lineNames.back() << " (at the rear) left the line\n";
             line.pop_back();
             lineNames.pop_back();
 
         }
 
-        if (lineNames.size() > 2 && (rand () % 100 + 1) <=10) {
+        if (lineNames.size() > 2 && (rand() % 100 + 1) <=10) {
             int pos = rand() % lineNames.size();
             cout << "   " << lineNames[pos] << " left the line\n";
             line.delete_pos(pos + 1);
@@ -285,14 +285,13 @@ int main() {
         if (lineNames.empty())
             cout << "   (empty)\n";
         else
-            for (string n : lineNames)
+            for (string n : lineNames) {
             cout << "   " << n << "\n";
-
     }
 
     cout << "\nSimulation complete. \n";
     return 0;
 
-}
+
         
     
