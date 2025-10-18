@@ -3,6 +3,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <thread>
+#include <chrono>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -215,7 +217,6 @@ int main() {
     if (!file) {
         cout << "Could not open names.txt, please try again.\n";
         return 1;
-
     }
 
     string name;
@@ -224,30 +225,17 @@ int main() {
     file.close();
 
     DoublyLinkedList line;
-    
+    vector<string> lineNames;
+
     cout << "Store is open:\n";
-    vector <string> lineNames;
 
-    for (int i = 0; i < 5; ++i) {
-    string customer = names[rand() % names.size()];
-    cout << "   " << customer << " joins the line\n";
-    line.push_back(i + 1);
-    lineNames.push_back(customer);
-
-    }
-
-    cout << "Resulting line:\n";
-    for (string n : lineNames)
-        cout << "   " << n << "\n";
-
-    for (int minute = 2; minute <= 20; ++minute) {
+    for (int minute = 1; minute <= 20; ++minute) {
         cout << "\nTime step #" << minute << ":\n";
 
         if (!lineNames.empty() && (rand() % 100 + 1) <= 40) {
             cout << "   " << lineNames.front() << " is served\n";
             line.pop_front();
             lineNames.erase(lineNames.begin());
-
         }
 
         if ((rand() % 100 + 1) <= 10) {
@@ -255,43 +243,39 @@ int main() {
             cout << "   " << vip << " (VIP) joins the front of the line\n";
             line.push_front(rand() % 90 + 10);
             lineNames.insert(lineNames.begin(), vip);
-
         }
 
-        if ((rand() % 100 + 1) <=60) {
+        if ((rand() % 100 + 1) <= 60) {
             string newcomer = names[rand() % names.size()];
-            cout << "   "  << newcomer << " joins the line\n";
+            cout << "   " << newcomer << " joins the line\n";
             line.push_back(rand() % 90 + 10);
             lineNames.push_back(newcomer);
-
         }
 
-        if(!lineNames.empty() && (rand() % 100 + 1) <= 20) {
+        if (!lineNames.empty() && (rand() % 100 + 1) <= 20) {
             cout << "   " << lineNames.back() << " (at the rear) left the line\n";
             line.pop_back();
             lineNames.pop_back();
-
         }
 
-        if (lineNames.size() > 2 && (rand() % 100 + 1) <=10) {
+        if (lineNames.size() > 2 && (rand() % 100 + 1) <= 10) {
             int pos = rand() % lineNames.size();
             cout << "   " << lineNames[pos] << " left the line\n";
             line.delete_pos(pos + 1);
             lineNames.erase(lineNames.begin() + pos);
-
         }
 
         cout << " Resulting line:\n";
         if (lineNames.empty())
             cout << "   (empty)\n";
         else
-            for (string n : lineNames) {
-            cout << "   " << n << "\n";
+            for (string n : lineNames)
+                cout << "   " << n << "\n";
+  
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+  
     }
 
-    cout << "\nSimulation complete. \n";
+    cout << "\nSimulation complete.\n";
     return 0;
-
-
-        
-    
+}
