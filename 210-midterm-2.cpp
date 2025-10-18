@@ -223,5 +223,23 @@ int main() {
         names.push_back(name);
     file.close();
 
+    DoublyLinkedList line;
+    
+    cout << "Store is open:\n"
+    vector <string> lineNames;
+
+    for (int i = 0; i < 5; ++i) {
+    string customer = name[rand() % names.size()];
+    cout << "   " << customer << " joins the line\n";
+    line.push_back(i + 1);
+    linesNames.push_back(customer);
+
+    }
+
+    cout 
+    
+    
+    
+    
     cout << "There are " << names.size() << "names from the file. \n\n"
     
